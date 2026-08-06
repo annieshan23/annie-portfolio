@@ -166,7 +166,10 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* 2. Name card overlapping into the lower third of the hero photo. */}
+      {/* 2. Name card overlapping into the lower third of the hero photo.
+          Double violet frame, translucent so the skyline fade shows through.
+          The original single-frame card is preserved in NameCardOld.jsx and in
+          git (commit before this redesign) for a clean rollback. */}
       <div className="relative z-20 mx-auto -mt-[120px] max-w-content px-6 sm:-mt-[136px] lg:-mt-40 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -193,11 +196,12 @@ export default function Landing() {
             />
           </div>
           <div>
-            <ul className="max-w-xl space-y-1 text-sm leading-snug text-ink-secondary">
+            <ul className="max-w-xl space-y-1 text-sm leading-snug text-[#3B3650]">
               {[
-                'A marketing and business analyst who bridges narrative and numbers',
-                'A problem solver who finds clarity and scalable solutions in complex situations',
-                'A lifelong learner and adventurer',
+                'Business analyst who bridges narrative and numbers',
+                'Problem solver who finds scalable solutions in complexity',
+                'AI powered architect of end-to-end workflows',
+                'Lifelong learner and adventurer',
               ].map((point) => (
                 <li key={point} className="flex gap-2.5">
                   <span
@@ -220,6 +224,34 @@ export default function Landing() {
           </div>
           </div>
         </motion.div>
+
+        {/* Contact strip: slim centered row below the card, outside the frame. */}
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-[13.5px]">
+          <span>
+            <span className="font-semibold text-violet">email</span>{' '}
+            <a
+              href="mailto:annieshan2026@u.northwestern.edu"
+              className="text-ink-secondary no-underline transition-colors hover:text-violet"
+            >
+              annieshan2026@u.northwestern.edu
+            </a>
+          </span>
+          <span>
+            <span className="font-semibold text-violet">linkedin</span>{' '}
+            <a
+              href="https://www.linkedin.com/in/annie-shan-1234b4257/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-ink-secondary no-underline transition-colors hover:text-violet"
+            >
+              LinkedIn
+            </a>
+          </span>
+          <span>
+            <span className="font-semibold text-violet">phone</span>{' '}
+            <span className="text-ink-secondary">+1 (347) 226 0388</span>
+          </span>
+        </div>
       </div>
 
       {/* 3. About paragraph. */}
