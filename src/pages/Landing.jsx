@@ -159,7 +159,7 @@ export default function Landing() {
                 Hi, I'm Annie, and
               </Eyebrow>
               <h1 className="mt-4 max-w-3xl font-serif text-5xl leading-tight text-white [text-shadow:_0_2px_24px_rgba(0,0,0,0.35)] md:text-7xl">
-                I tell stories with <span className="italic">data.</span>
+                I tell stories with data.
               </h1>
             </motion.div>
           </div>
@@ -185,7 +185,7 @@ export default function Landing() {
           </div>
 
           {/* Headshot on the left, bullets and buttons top-aligned beside it. */}
-          <div className="mt-5 grid gap-6 md:grid-cols-[auto_1fr] md:items-start md:gap-8">
+          <div className="mt-5 grid gap-6 md:grid-cols-[auto_1fr] md:items-stretch md:gap-8">
           <div className="w-32 shrink-0">
             <SmartImage
               src="/images/headshot.jpg"
@@ -195,24 +195,37 @@ export default function Landing() {
               rounded="rounded-2xl"
             />
           </div>
-          <div>
-            <ul className="max-w-xl space-y-1 text-sm leading-snug text-[#3B3650]">
+          <div className="flex h-full flex-col">
+            {/* Two columns of two: bullets 1/2 left, 3/4 right, split by a thin
+                violet divider. Each bullet stays on one line (whitespace-nowrap);
+                on narrow screens the columns stack but bullets still stay single
+                line. */}
+            <div className="mt-auto flex flex-col gap-[10px] text-sm leading-snug text-[#3B3650] sm:flex-row sm:gap-0">
               {[
-                'Business analyst who bridges narrative and numbers',
-                'Problem solver who finds scalable solutions in complexity',
-                'AI powered architect of end-to-end workflows',
-                'Lifelong learner and adventurer',
-              ].map((point) => (
-                <li key={point} className="flex gap-2.5">
-                  <span
-                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet"
-                    aria-hidden="true"
-                  />
-                  <span>{point}</span>
-                </li>
+                ['Business analyst who bridges narrative and numbers', 'Problem solver who finds scalable solutions in complexity'],
+                ['AI powered architect of end-to-end workflows', 'Lifelong learner and adventurer'],
+              ].map((column, i) => (
+                <ul
+                  key={i}
+                  className={`flex flex-col gap-[10px] sm:px-[26px] ${
+                    i === 0 ? 'sm:pl-0 sm:border-r sm:border-[#EAE6F3]' : 'sm:pr-0'
+                  }`}
+                >
+                  {column.map((point) => (
+                    <li key={point} className="flex gap-2.5 whitespace-nowrap">
+                      <span
+                        className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet"
+                        aria-hidden="true"
+                      />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
               ))}
-            </ul>
-            <div className="mt-4 flex flex-wrap gap-3">
+            </div>
+            {/* Pushed to the bottom of the column so they align with the bottom
+                of the headshot on desktop. */}
+            <div className="mt-auto flex flex-wrap gap-3 pt-4">
               <Button to="/resume">resume</Button>
               <Button to="/data" variant="outline">
                 data work
@@ -226,7 +239,7 @@ export default function Landing() {
         </motion.div>
 
         {/* Contact strip: slim centered row below the card, outside the frame. */}
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-[13.5px]">
+        <div className="mb-10 mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-[13.5px] md:mb-16">
           <span>
             <span className="font-semibold text-violet">email</span>{' '}
             <a
@@ -242,9 +255,9 @@ export default function Landing() {
               href="https://www.linkedin.com/in/annie-shan-1234b4257/"
               target="_blank"
               rel="noreferrer"
-              className="text-ink-secondary no-underline transition-colors hover:text-violet"
+              className="text-violet no-underline transition-colors hover:text-violet"
             >
-              LinkedIn
+              my page
             </a>
           </span>
           <span>

@@ -385,6 +385,25 @@ Big marketing session. Supersedes the mosaic layout in 8.22 and the fallback sta
 
 **Footer copy (`Footer.jsx`):** left is now just "data-driven storyteller" (dropped the "Annie Shan" wordmark line and "based in Chicago"); right reads "Built by Annie Shan and her Claude".
 
+### 8.24 Resume page rebuilt (DONE) — `src/pages/Resume.jsx`
+
+Rebuilt from Annie's spec with real content. Page title "Resume" and nav unchanged. Section order: **Education → Professional Experience → Leadership → Skill Set**.
+- **One warm card everywhere:** every card is `bg-white` (started as `bg-cream`, then Annie asked for **pure white** so cards separate cleanly from the warm `bg-base` page). The old violet/cream `tint` card variant is gone. A single `const CARD` string holds the card classes.
+- **Download CV button** (`Button href="/cv/annie-shan-cv.pdf"`) is violet (the only violet on the page), pinned top-right (`justify-end`). **The CV PDF is now in** at `public/cv/annie-shan-cv.pdf`.
+- **Company/school names** are emphasized: semibold, `text-[16px]`, richer terracotta `#9E5730` (deepened from `#B06A45` via inline `style`) on every Education/Experience/Leadership card.
+- **Card shapes:** Education = full-width single column, degree on one row (`whitespace-nowrap`, no description). Experience + Leadership = two columns (`md:grid-cols-[0.8fr_1.2fr]`, `gap-x-8`) with date/role/company/location left and a **`text-sm`** summary right (Annie asked summaries be shrunk to ~location size). Skill Set = same white card, terracotta label left, items right.
+- Dates/locations in `text-ink-muted`; roles/degrees in Newsreader. Content (five experience, one leadership, two education, three skill groups) lives in arrays at the top of the file. Copy is dash-free except the kept "data-driven".
+
+### 8.25 Landing name card redesign + hero headline (DONE) — `src/pages/Landing.jsx`
+
+Iterated the hero name card and contact info. **Restore points:** git was initialized this session (commits `1e52ab6` pre-redesign, `9ec8ed6` mid). The **original single-frame card is preserved verbatim in `src/components/NameCardOld.jsx`** (not rendered; drop back into Landing section 2 to revert). A double-violet-frame variant was prototyped and **reverted** at Annie's request — the card is back to the original **plain white single frame** (`rounded-2xl border border-violet/15 bg-white shadow-…`).
+- **Hero headline:** italic removed from "data" — the line "I tell stories with data." is now fully upright.
+- **Four bullets in a 2×2 grid** (replaced the old three): a flex row of two `ul` columns split by a **1px `#EAE6F3` vertical divider** (`sm:border-r`), `sm:px-[26px]` each side of it, **row gap `10px`** within a column. Bullets 1/2 left, 3/4 right. Each bullet is **`whitespace-nowrap`** (stays one line; columns stack on mobile, bullets still single-line). Text color `#3B3650`. The block is vertically centered against the headshot via `mt-auto` (grid is `md:items-stretch`, right column is `flex h-full flex-col`).
+- **Quick-link pills** (resume solid, data work + marketing outline) are pushed to the bottom with `mt-auto pt-4` so they align with the bottom of the headshot.
+- **Contact strip** (new, below the card, outside the frame): centered row, three items with violet 600 labels + `#4F4A57` values at `text-[13.5px]` — **email** (mailto), **linkedin** → linked words "my page" (new tab; the earlier awkward "linkedin LinkedIn" was fixed), **phone** `+1 (347) 226 0388`. Strip has `mb-10 md:mb-16` so there's a comfortable gap before the "But first, a little story about me" section.
+
 ### 8.13 Still to build (scaffold only)
 - **Marketing thumbnails + slide decks:** all six `detail` objects and `image` paths are wired (8.23), but the actual PNGs are dropped in per project. As of now **Starbucks has its full 17-slide deck + thumbnail in**; the other five show numbered dashed placeholders until their `thumbnail.png` and `1.png..N.png` are added under `public/images/marketing/<slug>/`. Just drop files in; no code changes needed (adjust a `slides.count` in `projects.js` only if a deck's length changes).
-- **Resume/CV** and **Fun Facts** pages (section 4.5, 4.6) — still working scaffolds in `src/pages/`, need real content and a design pass. Resume content (experience/education entries) and the CV PDF (`public/cv/`) come from Annie.
+- **Fun Facts** page (section 4.6) — **THIS IS THE NEXT THING TO BUILD.** Still a working scaffold in `src/pages/FunFacts.jsx`; needs real content and a design pass, developed live with Annie. Keep it warm, playful, and on brand (violet accents, Newsreader headings, Inter body, no dashes except the two kept terms).
+- **Resume/CV — DONE** (see 8.24). CV PDF is in.
+- **Marketing decks** — five still need their PNGs dropped in (see first bullet).
