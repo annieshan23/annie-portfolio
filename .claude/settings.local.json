@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --disable-gpu --hide-scrollbars --window-size=1280,900 --screenshot=/tmp/data-v10.png http://localhost:5173/data)"
+    ]
+  }
+}

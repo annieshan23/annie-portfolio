@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-base text-ink font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif;
+    /* Balance headline line lengths so titles don't wrap one word to a line. */
+    text-wrap: balance;
+  }
+
+  /* Avoid line widows: never strand a single short word on the last line of a
+     paragraph. Applies site wide to body copy, list items, and captions. */
+  p,
+  li,
+  figcaption {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* Section eyebrow: clean sans caps, wide tracking, accent color. */
+  .eyebrow {
+    @apply font-sans uppercase tracking-eyebrow text-xs font-semibold;
+  }
+}
