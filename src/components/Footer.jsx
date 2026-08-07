@@ -5,7 +5,7 @@ const links = [
   { to: '/resume', label: 'resume' },
   { to: '/data', label: 'data' },
   { to: '/marketing', label: 'marketing' },
-  { to: '/funfacts', label: 'fun facts' },
+  { to: '/funfacts', label: 'OOO' },
 ]
 
 export default function Footer() {

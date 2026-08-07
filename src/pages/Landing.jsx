@@ -175,7 +175,7 @@ export default function Landing() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut', delay: 0.35 }}
-          className="rounded-2xl border border-violet/15 bg-white p-6 shadow-[0_20px_60px_-30px_rgba(74,63,143,0.4)] md:p-8"
+          className="rounded-2xl border border-violet/15 bg-white px-6 py-4 shadow-[0_20px_60px_-30px_rgba(74,63,143,0.4)] md:px-8 md:py-6"
         >
           {/* Name header across the top of the card. */}
           <div className="flex flex-wrap items-center gap-2">
@@ -185,7 +185,7 @@ export default function Landing() {
           </div>
 
           {/* Headshot on the left, bullets and buttons top-aligned beside it. */}
-          <div className="mt-5 grid gap-6 md:grid-cols-[auto_1fr] md:items-stretch md:gap-8">
+          <div className="mt-3 grid gap-6 md:grid-cols-[auto_1fr] md:items-stretch md:gap-8">
           <div className="w-32 shrink-0">
             <SmartImage
               src="/images/headshot.jpg"
@@ -212,7 +212,7 @@ export default function Landing() {
                   }`}
                 >
                   {column.map((point) => (
-                    <li key={point} className="flex gap-2.5 whitespace-nowrap">
+                    <li key={point} className="flex gap-2.5 whitespace-nowrap italic">
                       <span
                         className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet"
                         aria-hidden="true"
@@ -225,7 +225,7 @@ export default function Landing() {
             </div>
             {/* Pushed to the bottom of the column so they align with the bottom
                 of the headshot on desktop. */}
-            <div className="mt-auto flex flex-wrap gap-3 pt-4">
+            <div className="flex flex-wrap gap-3 pt-4">
               <Button to="/resume">resume</Button>
               <Button to="/data" variant="outline">
                 data work

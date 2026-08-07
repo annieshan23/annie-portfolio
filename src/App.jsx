@@ -22,11 +22,13 @@ function ScrollToTop() {
 export default function App() {
   const { pathname } = useLocation()
   const isLanding = pathname === '/'
+  // The OOO page also uses a full-bleed photo hero, so the nav overlays it.
+  const overlayNav = isLanding || pathname === '/funfacts'
 
   return (
     <div className="min-h-screen flex flex-col">
       <ScrollToTop />
-      <Nav overlay={isLanding} />
+      <Nav overlay={overlayNav} />
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Landing />} />

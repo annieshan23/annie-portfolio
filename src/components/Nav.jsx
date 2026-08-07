@@ -6,7 +6,7 @@ const links = [
   { to: '/resume', label: 'resume' },
   { to: '/data', label: 'data' },
   { to: '/marketing', label: 'marketing' },
-  { to: '/funfacts', label: 'fun facts' },
+  { to: '/funfacts', label: 'OOO' },
 ]
 
 // Top nav. Overlaid and transparent on the landing hero, sticky elsewhere.
