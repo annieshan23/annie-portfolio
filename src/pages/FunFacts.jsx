@@ -1,27 +1,17 @@
 import Section from '../components/Section.jsx'
 import Eyebrow from '../components/Eyebrow.jsx'
-import Chip from '../components/Chip.jsx'
 import SmartImage from '../components/SmartImage.jsx'
 
-// Fun Facts — warm, playful, on brand (violet accents, Newsreader headings,
-// no dashes). Leans into the adventurer motif from the landing page.
-// Developed live with Annie; copy and photos are hers to edit.
+// OOO ("out of office") — life beyond work. Warm, on brand (violet accents,
+// Newsreader headings, no dashes). Developed live with Annie.
 
-// One passion block: heading, paragraph, a row of little detail chips, and a
-// pair of photo placeholders. `flip` puts the photos on the left.
-function Passion({ eyebrow, title, children, chips = [], photos = [], flip = false }) {
+// One passion block: a Newsreader title, body text, and a pair of photos.
+// `flip` puts the photos in the left column (text on the right).
+function Passion({ title, children, photos = [], flip = false }) {
   const text = (
     <div className="max-w-xl">
-      <Eyebrow accent="violet">{eyebrow}</Eyebrow>
-      <h2 className="mt-3 font-serif text-3xl text-ink md:text-4xl">{title}</h2>
+      <h2 className="font-serif text-3xl text-ink md:text-4xl">{title}</h2>
       <div className="mt-5 space-y-4 text-ink-secondary">{children}</div>
-      {chips.length > 0 && (
-        <div className="mt-6 flex flex-wrap gap-2">
-          {chips.map((c) => (
-            <Chip key={c}>{c}</Chip>
-          ))}
-        </div>
-      )}
     </div>
   )
 
@@ -50,15 +40,45 @@ function Passion({ eyebrow, title, children, chips = [], photos = [], flip = fal
   )
 }
 
-// Closing photo gallery: a few candid moments in a light mosaic.
-const moments = [
-  { label: 'a moment', src: '/images/funfacts/moment-1.jpg', span: 'md:col-span-2', ratio: 'aspect-[16/9]' },
-  { label: 'a moment', src: '/images/funfacts/moment-2.jpg', ratio: 'aspect-square' },
-  { label: 'a moment', src: '/images/funfacts/moment-3.jpg', ratio: 'aspect-square' },
-  { label: 'a moment', src: '/images/funfacts/moment-4.jpg', ratio: 'aspect-square' },
-  { label: 'a moment', src: '/images/funfacts/moment-5.jpg', ratio: 'aspect-square' },
-  { label: 'a moment', src: '/images/funfacts/moment-6.jpg', span: 'md:col-span-2', ratio: 'aspect-[16/9]' },
+// Centered "things I'm into" list.
+const hobbies = [
+  'A beginning runner, currently training for the Chicago Half Marathon after coming back from a leg injury',
+  'Picking up tennis, very much in the enthusiastic beginner phase',
+  'An ocean person at heart, a surfer and a PADI certified diver',
+  'A Nintendo fan, with a soft spot for Zelda above all',
 ]
+
+// Count agnostic gallery: any images dropped into src/assets/funfacts-gallery
+// are picked up in natural filename order at build time. Until then, a set of
+// placeholder cards keep the carousel shape.
+const galleryModules = import.meta.glob('../assets/funfacts-gallery/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', {
+  eager: true,
+  import: 'default',
+})
+const galleryImages = Object.keys(galleryModules)
+  .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+  .map((k) => galleryModules[k])
+
+// Two row photo grid: three across on desktop, so six show at once. Any images
+// dropped into the gallery folder fill it in order; until then, six placeholder
+// cards keep the shape.
+function GalleryGrid() {
+  const cards = galleryImages.length ? galleryImages : Array.from({ length: 6 }, () => null)
+
+  return (
+    <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3">
+      {cards.map((src, i) => (
+        <SmartImage
+          key={i}
+          src={src || undefined}
+          label="a moment"
+          ratio="aspect-[4/3]"
+          rounded="rounded-2xl"
+        />
+      ))}
+    </div>
+  )
+}
 
 export default function FunFacts() {
   return (
@@ -90,78 +110,77 @@ export default function FunFacts() {
         </div>
       </section>
 
-      {/* Passion one: travel */}
+      {/* Section 1: World traveler — photo left, text right. */}
       <Section bg="white">
         <Passion
-          eyebrow="always exploring"
-          title="Chasing the next place"
-          chips={['new cities', 'road trips', 'window seats', 'local food']}
+          flip
+          title="World traveler"
           photos={[
             { label: 'travel photo', src: '/images/funfacts/travel-1.jpg' },
             { label: 'travel photo', src: '/images/funfacts/travel-2.jpg' },
           ]}
         >
           <p>
-            I collect places the way some people collect playlists. A new city means a
-            morning with no plan, a map I half ignore, and a list of small spots to find on
-            foot. I love the messy first hour in a place I have never been, when everything
-            is a question and the answers are just around the next corner.
-          </p>
-          <p>
-            Wherever I land, the food comes first. The best afternoons start with a
-            recommendation from someone who actually lives there.
+            There's a cliché story I keep telling people. Back in high school, a teacher
+            asked what we wanted to do with our lives, and I said I wanted to leave my
+            footprint on every corner of the world. Everyone laughed, because it didn't
+            sound like a real career. But the dream had already taken root, and it never
+            really left. 20+ countries later, I'm still always on the road.
           </p>
         </Passion>
       </Section>
 
-      {/* Passion two: hiking */}
+      {/* Section 2: On foot and on the road — text left, photo right. */}
       <Section bg="base">
         <Passion
-          flip
-          eyebrow="happiest on a trail"
-          title="Up where the view earns itself"
-          chips={['switchbacks', 'summit coffee', 'golden hour', 'good boots']}
+          title="On foot and on the road"
           photos={[
             { label: 'trail photo', src: '/images/funfacts/hike-1.jpg' },
             { label: 'trail photo', src: '/images/funfacts/hike-2.jpg' },
           ]}
         >
           <p>
-            There is a kind of quiet you only find a few hours up a trail. No notifications,
-            no dashboards, just the next step and the sound of your own breathing. Hiking is
-            where I do my clearest thinking, which is funny, because the whole point is to
-            stop thinking for a while.
-          </p>
-          <p>
-            The view at the top is the reward, but honestly it is the climb I keep coming
-            back for. A long trail is really just a problem you solve with your legs.
+            Of all the ways to move through a place, hiking and road trips are the two I
+            love most. Both put you close to the wilderness, wind on your face, nowhere to
+            be but the next mile. There's something about watching the dust kick up behind
+            the wheels, or reaching a ridgeline on foot, that makes me feel completely
+            alive. So far that's meant hiking across 4 continents and road tripping to 20+
+            national parks, and the list keeps growing.
           </p>
         </Passion>
       </Section>
 
-      {/* Closing gallery */}
+      {/* Section 3: Hobbies — centered, text only. */}
       <Section bg="white">
-        <div className="text-center">
-          <Eyebrow accent="violet" className="text-center">
-            the photo dump
-          </Eyebrow>
-          <h2 className="mt-3 font-serif text-3xl text-ink md:text-4xl">A few favorite moments</h2>
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-serif text-3xl text-ink md:text-4xl">
+            Of course, we're also welcome to talk about
+          </h2>
+          <p className="mt-4 text-[#4F4A57]">
+            There's always something new I'm trying to get better at,
+            <br />
+            and just as often something old I keep coming back to.
+          </p>
         </div>
-        <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
-          {moments.map((m, i) => (
-            <SmartImage
-              key={i}
-              src={m.src}
-              label={m.label}
-              ratio={m.ratio}
-              className={m.span || ''}
-            />
+        <ul className="mx-auto mt-8 w-fit space-y-4 text-left">
+          {hobbies.map((item) => (
+            <li key={item} className="flex gap-3 text-ink-secondary md:whitespace-nowrap">
+              <span
+                className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-violet"
+                aria-hidden="true"
+              />
+              <span>{item}</span>
+            </li>
           ))}
-        </div>
-        <p className="mt-10 text-center text-ink-secondary">
-          Thanks for scrolling all the way here. If any of this resonates, I would love to
-          swap trail recommendations sometime.
-        </p>
+        </ul>
+      </Section>
+
+      {/* Section 4: The photo gallery — horizontal carousel. */}
+      <Section bg="base">
+        <h2 className="text-center font-serif text-3xl text-ink md:text-4xl">
+          The photo gallery
+        </h2>
+        <GalleryGrid />
       </Section>
     </>
   )
