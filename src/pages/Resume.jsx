@@ -22,40 +22,50 @@ const experience = [
     role: 'Data Analytics and UX Graduate Intern',
     company: 'Lenovo',
     location: 'Chicago, US',
-    summary:
-      "On Lenovo's Data and UX team, I work on an agent orchestrated pipeline that pairs deterministic Python with LLM reasoning to streamline analytics. Alongside it, we run voice of customer EDA on 60K+ feedback records to surface recurring product patterns.",
+    bullets: [
+      'Agent orchestrated Python and LLM analytics pipeline',
+      'Conducted EDA on 60K+ Lenovo VoC feedback records',
+    ],
   },
   {
     dates: 'Feb 2026 to May 2026',
     role: 'Business Analytics Consultant',
     company: 'Hyde Park School of Dance',
     location: 'Chicago, US',
-    summary:
-      'Consolidated data from 4 platforms into a single source of truth, then built enrollment dashboards tracking KPIs like retention and tenure. The analysis surfaced acquisition gaps across 15+ dance programs and lifted 40% in cross selling opportunities.',
+    bullets: [
+      'Integrated 4 platforms and 30+ exports data into one source of truth',
+      'Built KPI dashboards; surfaced 40% cross selling upside',
+    ],
   },
   {
     dates: 'June 2024 to Aug 2024',
     role: 'Media Relations Intern',
     company: 'Antenna',
     location: 'New York, US',
-    summary:
-      'Over 3 months at Antenna, I managed campaign dashboards and secured 20+ placements across national and industry publications. Relationships built with 15+ outlets including Fox News and USA Today lifted client visibility by 40%.',
+    bullets: [
+      'Secured 20+ media placements in national and industry press',
+      'Built 15+ outlet ties (Fox News, USA Today), +40% brand visibility',
+    ],
   },
   {
     dates: 'July 2023 to Aug 2023',
     role: 'Analytics and Consumer Insights Intern',
     company: 'Ogilvy',
     location: 'Shanghai, China',
-    summary:
-      'My proudest work at Ogilvy was a data-driven healthcare campaign, with Tableau consumer insight dashboards that drove 50K+ impressions post launch. It also spanned A/B tests on ecommerce creative and a brand audit across three channels.',
+    bullets: [
+      'Data-driven healthcare campaign that garnered 50K+ impressions via Tableau',
+      'A/B tests on ecommerce creative; brand audit across 3 channels',
+    ],
   },
   {
     dates: 'Oct 2021 to Dec 2021',
     role: 'Marketing Analytics Intern',
     company: 'Accenture',
     location: 'Shanghai, China',
-    summary:
-      'At Accenture, I was in charge of social campaign performance across platforms that surfaced a strategy that drove roughly 130% growth in UGC. Also conducted daily social listening reports that tracked brand mentions and trends for brand health monitoring.',
+    bullets: [
+      'Social strategy across 4 platforms; +130% UGC growth',
+      'Daily social listening on mentions, sentiment, trends',
+    ],
   },
 ]
 
@@ -65,8 +75,10 @@ const leadership = [
     role: 'Marketing Director',
     company: 'Trapped in the Flash',
     location: 'New York',
-    summary:
-      'Leading a 9 person team, I marketed an Off Off Broadway production that drew 300+ attendees, owning the content calendar and weekly execution. Our omni channel campaign strategy reached 20K+ views and 4K+ interactions across four social sites.',
+    bullets: [
+      'Led 9 person team for an Off Off Broadway show that drew 300+ attendees',
+      'Designed omni channel campaign that captured 20K+ views, 4K+ interactions',
+    ],
   },
 ]
 
@@ -115,7 +127,18 @@ function RoleCard({ item }) {
         </p>
         <p className="text-sm text-ink-muted">{item.location}</p>
       </div>
-      <p className="text-sm text-ink-secondary">{item.summary}</p>
+      <ul className="space-y-[9px] text-sm">
+        {item.bullets.map((point) => (
+          <li key={point} className="flex gap-2.5">
+            <span
+              className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full"
+              style={{ backgroundColor: '#9E5730' }}
+              aria-hidden="true"
+            />
+            <span style={{ color: '#4F4A57' }}>{point}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

@@ -13,7 +13,7 @@ export default function Footer() {
     <footer className="border-t border-violet/10 bg-white">
       <div className="mx-auto flex max-w-content flex-col gap-6 px-6 py-12 md:flex-row md:items-center md:justify-between md:px-8">
         <div>
-          <p className="font-serif text-lg text-ink">data-driven storyteller</p>
+          <p className="font-serif text-lg text-ink">Data-driven storyteller</p>
         </div>
         <ul className="flex flex-wrap gap-5 text-sm text-ink-secondary">
           {links.map((link) => (

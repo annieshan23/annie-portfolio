@@ -536,7 +536,7 @@ aft <- survreg(
 summary(aft)`,
       },
     },
-    links: { githubR: '#', githubPython: '#' },
+    links: { githubR: 'https://github.com/annieshan23/NU-machine-learning-projects/blob/main/Marketing%20Models%20Assignment%201.R', githubPython: '#' },
   },
   {
     slug: 'tiktok-creator-emotion',
@@ -730,7 +730,7 @@ final_lasso <- glmnet(X_with_interactions, Y, alpha = 1, lambda = cv_lasso$lambd
 final_xgb <- xgboost(data = dtrain, params = best_params, nrounds = best_nrounds)`,
       },
     },
-    links: { githubR: '#' },
+    links: { githubR: 'https://github.com/annieshan23/NU-machine-learning-projects/blob/main/Models.R' },
   },
   {
     slug: 'kakao-causal-inference',
@@ -956,7 +956,7 @@ summary(plm(lt_kakao_game ~ as.factor(week) + ii + ii:income,
             data = matched.p, model = "within", weights = weights))`,
       },
     },
-    links: { githubR: '#' },
+    links: { githubR: 'https://github.com/annieshan23/NU-machine-learning-projects/blob/main/marketing%20models%20assignment%202.R' },
   },
 ]
 

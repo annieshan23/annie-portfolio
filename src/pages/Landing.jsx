@@ -180,8 +180,6 @@ export default function Landing() {
           {/* Name header across the top of the card. */}
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="font-serif text-2xl text-ink">Annie (Xinhui) Shan</h2>
-            <span className="h-1.5 w-1.5 rounded-full bg-violet" aria-hidden="true" />
-            <span className="text-sm text-ink-muted">based in chicago · open to work</span>
           </div>
 
           {/* Headshot on the left, bullets and buttons top-aligned beside it. */}
@@ -225,7 +223,7 @@ export default function Landing() {
             </div>
             {/* Pushed to the bottom of the column so they align with the bottom
                 of the headshot on desktop. */}
-            <div className="flex flex-wrap gap-3 pt-4">
+            <div className="mb-3 flex flex-wrap gap-3 pt-4">
               <Button to="/resume">resume</Button>
               <Button to="/data" variant="outline">
                 data work
@@ -239,7 +237,7 @@ export default function Landing() {
         </motion.div>
 
         {/* Contact strip: slim centered row below the card, outside the frame. */}
-        <div className="mb-10 mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-[13.5px] md:mb-16">
+        <div className="mb-7 mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-[13.5px] md:mb-11">
           <span>
             <span className="font-semibold text-violet">email</span>{' '}
             <a
@@ -250,20 +248,25 @@ export default function Landing() {
             </a>
           </span>
           <span>
-            <span className="font-semibold text-violet">linkedin</span>{' '}
-            <a
-              href="https://www.linkedin.com/in/annie-shan-1234b4257/"
-              target="_blank"
-              rel="noreferrer"
-              className="text-violet no-underline transition-colors hover:text-violet"
-            >
-              my page
-            </a>
-          </span>
-          <span>
             <span className="font-semibold text-violet">phone</span>{' '}
             <span className="text-ink-secondary">+1 (347) 226 0388</span>
           </span>
+          <a
+            href="https://www.linkedin.com/in/annie-shan-1234b4257/"
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold text-violet no-underline transition-opacity hover:opacity-70"
+          >
+            linkedin
+          </a>
+          <a
+            href="https://github.com/annieshan23"
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold text-violet no-underline transition-opacity hover:opacity-70"
+          >
+            github
+          </a>
         </div>
       </div>
 

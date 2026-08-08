@@ -113,7 +113,7 @@ export default function Data() {
       </section>
 
       {/* Project cards under the active tab. */}
-      <div className="mx-auto max-w-content px-6 pt-16 pb-16 md:px-8">
+      <div className="mx-auto max-w-content px-6 pt-24 pb-24 md:px-8">
         <div className="space-y-20">
           {visible.map((project, i) => {
             const Hero = project.detail?.hero ? heroes[project.detail.hero] : null
