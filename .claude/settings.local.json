@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --disable-gpu --hide-scrollbars --window-size=1280,900 --screenshot=/tmp/data-v10.png http://localhost:5173/data)"
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --disable-gpu --hide-scrollbars --window-size=1280,900 --screenshot=/tmp/data-v10.png http://localhost:5173/data)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=old --disable-gpu --hide-scrollbars --window-size=390,900 --virtual-time-budget=2500 --screenshot=/tmp/o1.png http://localhost:5173/)",
+      "Read(//tmp/**)",
+      "Bash(npm run *)",
+      "Bash(pkill -f \"remote-debugging-port=9222\")",
+      "Bash(pkill -f \"vite\")"
     ]
   }
 }
