@@ -35,3 +35,15 @@
     @apply font-sans uppercase tracking-eyebrow text-xs font-semibold;
   }
 }
+
+@layer utilities {
+  /* Hide the scrollbar while keeping the element scrollable (used by the mobile
+     nav's compact scrolling row). */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}

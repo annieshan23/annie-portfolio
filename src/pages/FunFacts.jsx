@@ -233,7 +233,7 @@ export default function FunFacts() {
           <SmartImage
             src="/images/funfacts/hero.jpg"
             label="hero photo"
-            ratio="aspect-[32/9]"
+            ratio="aspect-[4/3] sm:aspect-[16/7] md:aspect-[32/9]"
             rounded=""
             position="object-[center_70%]"
           />

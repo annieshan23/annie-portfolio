@@ -107,7 +107,7 @@ function EducationCard({ item }) {
   return (
     <div className={CARD}>
       <p className="text-sm text-ink-muted">{item.dates}</p>
-      <p className="mt-1 whitespace-nowrap font-serif text-lg text-ink">{item.degree}</p>
+      <p className="mt-1 font-serif text-lg text-ink sm:whitespace-nowrap">{item.degree}</p>
       <p className="mt-1 text-[16px] font-semibold" style={{ color: '#9E5730' }}>
         {item.school}
       </p>

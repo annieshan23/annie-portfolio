@@ -30,13 +30,19 @@ export default function Nav({ overlay = false }) {
 
   return (
     <header className={`${positioning} top-0 left-0 right-0 z-50 transition-colors duration-300 ${shell}`}>
-      <nav className="mx-auto flex max-w-content items-center justify-between px-6 py-4 md:px-8">
-        <NavLink to="/" className="font-serif text-lg font-medium tracking-tight">
+      <nav className="mx-auto flex max-w-content items-center justify-between gap-4 px-4 py-4 sm:px-6 md:px-8">
+        <NavLink
+          to="/"
+          className="shrink-0 whitespace-nowrap font-serif text-lg font-medium tracking-tight"
+        >
           Annie Shan
         </NavLink>
-        <ul className="flex items-center gap-5 text-sm md:gap-7">
+        {/* On mobile the links stay visible in a single row that can scroll
+            sideways if they don't all fit (scrollbar hidden); on md+ they space
+            out normally. min-w-0 lets the row shrink inside the flex parent. */}
+        <ul className="no-scrollbar flex min-w-0 items-center gap-3 overflow-x-auto whitespace-nowrap text-sm sm:gap-5 md:gap-7">
           {links.map((link) => (
-            <li key={link.to}>
+            <li key={link.to} className="shrink-0">
               <NavLink
                 to={link.to}
                 end={link.end}

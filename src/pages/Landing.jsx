@@ -128,16 +128,36 @@ export default function Landing() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease: 'easeOut' }}
         >
-          <SmartImage
-            natural
-            fit="contain"
-            src="/images/chicago-skyline.jpg"
-            alt="Chicago skyline"
-            label="chicago skyline"
-            ratio="aspect-[16/7]"
-            rounded=""
-            className="border-0"
-          />
+          {/* Mobile: a taller cover crop so the skyline reaches toward the
+              middle of the screen and leaves room under the headline for the
+              name card (the uncropped natural photo is a short band on a phone,
+              which crammed the headline and card together). */}
+          <div className="md:hidden">
+            <SmartImage
+              src="/images/chicago-skyline.jpg"
+              alt="Chicago skyline"
+              label="chicago skyline"
+              ratio="h-[56vh]"
+              fit="cover"
+              position="object-center"
+              rounded=""
+              className="border-0"
+            />
+          </div>
+          {/* Desktop: the full skyline at its natural proportion, nothing
+              cropped (unchanged). */}
+          <div className="hidden md:block">
+            <SmartImage
+              natural
+              fit="contain"
+              src="/images/chicago-skyline.jpg"
+              alt="Chicago skyline"
+              label="chicago skyline"
+              ratio="aspect-[16/7]"
+              rounded=""
+              className="border-0"
+            />
+          </div>
         </motion.div>
 
         {/* Legibility wash at top, soft fade to the page background at the
@@ -170,7 +190,7 @@ export default function Landing() {
           Double violet frame, translucent so the skyline fade shows through.
           The original single-frame card is preserved in NameCardOld.jsx and in
           git (commit before this redesign) for a clean rollback. */}
-      <div className="relative z-20 mx-auto -mt-[120px] max-w-content px-6 sm:-mt-[136px] lg:-mt-40 md:px-8">
+      <div className="relative z-20 mx-auto -mt-40 max-w-content px-6 sm:-mt-[136px] lg:-mt-40 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -210,7 +230,7 @@ export default function Landing() {
                   }`}
                 >
                   {column.map((point) => (
-                    <li key={point} className="flex gap-2.5 whitespace-nowrap italic">
+                    <li key={point} className="flex gap-2.5 italic sm:whitespace-nowrap">
                       <span
                         className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet"
                         aria-hidden="true"
@@ -237,7 +257,7 @@ export default function Landing() {
         </motion.div>
 
         {/* Contact strip: slim centered row below the card, outside the frame. */}
-        <div className="mb-7 mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-[13.5px] md:mb-11">
+        <div className="mb-2 mt-5 flex flex-col items-center justify-center gap-x-8 gap-y-2 break-words text-center text-[13.5px] sm:flex-row sm:flex-wrap md:mb-11">
           <span>
             <span className="font-semibold text-violet">email</span>{' '}
             <a
@@ -271,7 +291,7 @@ export default function Landing() {
       </div>
 
       {/* 3. About paragraph. */}
-      <Section bg="base">
+      <Section bg="base" innerClassName="pt-16 md:pt-20">
         <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
           <h2 className="font-serif text-2xl leading-snug text-ink md:text-3xl">
             But first, a little story about me
